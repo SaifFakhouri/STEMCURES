@@ -1,0 +1,736 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STEM CURES</title>
+    <script>
+      // Apply saved theme (or system) as early as possible to avoid flash
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = saved || (prefersDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">STEM CURES</a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#home">Home</a></li>
+          <li class="nav-item">
+            <a href="{% url 'faculty' %}">Faculty</a>
+          </li>
+          <li class="nav-item"><a href="#about">About</a></li>
+          <li class="nav-item"><a href="#mission">Mission</a></li>
+          <li class="nav-item"><a href="#programs">Programs</a></li>
+          <li class="nav-item"><a href="#impact">Impact</a></li>
+          <li class="nav-item"><a href="#social">Connect</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+          <li class="nav-item">
+            <a
+              href="https://stem-cures.snwbll.com/giving-portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="donate-btn"
+              >Donate</a
+            >
+          </li>
+          <li class="nav-item">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              title="Toggle dark/light mode"
+            >
+              <svg
+                class="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+              <svg
+                class="moon-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 style="color: #f4eee5">STEM CURES</h1>
+        <p style="color: #f4eee5">
+          Empowering Refugee Children Through STEM Education<br />Equipping,
+          Sustaining, and Inspiring Students and Teachers
+        </p>
+        <div
+          style="
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+          "
+        >
+          <a href="#about" class="cta-button">Discover Our Mission</a>
+          <a
+            href="https://stem-cures.snwbll.com/giving-portal"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            >Donate Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About STEM CURES</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Our project began in 2016 with a GoFundMe campaign, which raised
+            enough money to establish three science camps in the Zaatari Refugee
+            Camp. Over the course of four months, these clubs taught students
+            about the engineering design process. These camps also nurtured
+            students' personal growth by providing a safe space where they could
+            express their thoughts, share their ideas, and build confidence.
+          </p>
+          <p>
+            First, the camps boosted confidence in all the students especially
+            among the girls, who often face culture expectations of silence and
+            domesticity. However by the end of the camp, the girls took down the
+            social barrier and spoke out freely and confidently, revealing parts
+            of their character that had been hidden behind years of self-doubt.
+          </p>
+          <p>
+            Lastly, the camps helped uncover each students true potential not
+            just to their teachers, but to the students themselves.
+          </p>
+          <p>
+            Although this may seem like great progress, we have merely scratched
+            the surface. These STEM clubs have only served 2,000 students, and
+            yet children make up half of the camps 80,000 inhabitants, many of
+            whom have never been beyond the camps borders.
+          </p>
+          <p>
+            We want to share these tools with the rest of the children in the
+            camp to spark their curiosity, confidence, inspiration, and hope.
+            Explore below how we are expanding our impact and how you can be
+            part of our journey.
+          </p>
+        </div>
+        <div class="about-image">
+          <div>
+            <h3>Building Tomorrow's Innovators</h3>
+            <p>Supporting refugee children through education and hope</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="mission">
+      <div class="section">
+        <h2>Our Mission</h2>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3>🎯 Vision</h3>
+            <p>
+              To provide refugee children with quality STEM education that opens
+              doors to future opportunities and builds resilient communities.
+            </p>
+          </div>
+          <div class="mission-card">
+            <h3>🎓 Education</h3>
+            <p>
+              Equipping students and teachers with the tools, resources, and
+              knowledge needed for effective STEM learning in challenging
+              environments.
+            </p>
+          </div>
+          <div class="mission-card">
+            <h3>💪 Sustainability</h3>
+            <p>
+              Creating lasting educational programs that can continue to serve
+              communities long after initial implementation.
+            </p>
+          </div>
+          <div class="mission-card">
+            <h3>✨ Inspiration</h3>
+            <p>
+              Igniting curiosity and passion for learning that helps children
+              see beyond their current circumstances to a brighter future.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section">
+      <h2>Our Programs</h2>
+      <div class="programs-grid">
+        <div class="program-card">
+          <h3>🔧 Little Engineers</h3>
+          <p>
+            Hands-on building projects using simple materials to teach basic
+            engineering principles. Through interactive challenges, children
+            create bridges, towers, and simple machines while learning about
+            forces, structures, and design thinking.
+          </p>
+        </div>
+        <div class="program-card">
+          <h3>🌍 Interactive Builders</h3>
+          <p>
+            Children are drawn to real-world issues by the kind of fun
+            experiments like building earthquake-proof structures or testing the
+            strength of the material most people use. These get them thinking
+            and show them how engineering and imagination work together to fix
+            problems.
+          </p>
+        </div>
+        <div class="program-card">
+          <h3>🚀 Future Makers</h3>
+          <p>
+            By the convergence of imagination and engineering principles,
+            students gain the confidence to tackle open-ended challenges. Every
+            project promotes flexibility, teamwork, and ingenuity skills that
+            can benefit them far beyond the classroom and into their daily
+            lives.
+          </p>
+        </div>
+        <div class="program-card">
+          <h3>💡 Student Innovators</h3>
+          <p>
+            We encourage students to take the lead in their learning by
+            developing and exploring their own ideas. This open approach allows
+            them to practice creativity, problem-solving, and critical thinking
+            while applying the engineering mindset to challenges that matter to
+            them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+      <div class="section">
+        <h2>Our Impact</h2>
+        <div class="impact-stats">
+          <div class="stat">
+            <span class="stat-number">2000+</span>
+            <span class="stat-text">Children Reached</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10</span>
+            <span class="stat-text">Communities Served</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">75+</span>
+            <span class="stat-text">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2</span>
+            <span class="stat-text">Countries Reached</span>
+          </div>
+        </div>
+        <div style="margin-top: 3rem">
+          <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto">
+            Every number represents a young mind that discovered their
+            potential, a spark of curiosity ignited, and a step toward a
+            brighter future. Our programs don't just teach STEM - they transform
+            lives.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="social-section">
+      <div class="section">
+        <h2>Connect With Us</h2>
+        <p>Follow our journey and see the impact of your support</p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/STEM4Refugees"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
+            <span class="social-icon">📘</span>
+            <span>Facebook</span>
+          </a>
+          <a
+            href="https://mail.google.com/mail/?view=cm&to=stemcures2016@gmail.com"
+            target="_blank"
+            class="social-link"
+            rel="noopener noreferrer"
+          >
+            <span class="social-icon">✉️</span>
+            <span>Email Us</span>
+          </a>
+          <a
+            href="https://stem-cures.snwbll.com/giving-portal"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+          >
+            <span class="social-icon">❤️</span>
+            <span>Giving Portal</span>
+          </a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.9">
+          Join our community and help spread awareness about the importance of
+          STEM education for refugee children.
+        </p>
+      </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donate-section">
+      <div class="section">
+        <h2 style="color: white">Help Us Make a Difference</h2>
+        <p>
+          Your donation directly supports STEM education for refugee children.
+          Every contribution helps us provide materials, training, and hope for
+          a brighter future.
+        </p>
+        <a
+          href="https://stem-cures.snwbll.com/giving-portal"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="donate-button-large"
+          >Donate Now</a
+        >
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Get Involved</h2>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h3 class="accent-heading" style="margin-bottom: 2rem">
+            Join Our Mission
+          </h3>
+
+          <!-- Django Messages -->
+          {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <form method="POST" action="{% url 'contact_submit' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="name" style="color: var(--text-primary)"
+                >Full Name</label
+              >
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                value="{% if form_data.name %}{{ form_data.name }}{% endif %}"
+                class="{% if errors.name %}error{% endif %}"
+                required 
+              />
+              {% if errors.name %}
+                <span class="error-message">{{ errors.name }}</span>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="email" style="color: var(--text-primary)"
+                >Email Address</label
+              >
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value="{% if form_data.email %}{{ form_data.email }}{% endif %}"
+                class="{% if errors.email %}error{% endif %}"
+                required 
+              />
+              {% if errors.email %}
+                <span class="error-message">{{ errors.email }}</span>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="interest" style="color: var(--text-primary)"
+                >How would you like to help?</label
+              >
+              <select id="interest" name="interest" class="{% if errors.interest %}error{% endif %}" required>
+                <option value="">Select an option</option>
+                <option value="volunteer" {% if form_data.interest == 'volunteer' %}selected{% endif %}>Volunteer</option>
+                <option value="donate" {% if form_data.interest == 'donate' %}selected{% endif %}>Donate</option>
+                <option value="partner" {% if form_data.interest == 'partner' %}selected{% endif %}>Partnership</option>
+                <option value="other" {% if form_data.interest == 'other' %}selected{% endif %}>Other</option>
+              </select>
+              {% if errors.interest %}
+                <span class="error-message">{{ errors.interest }}</span>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="message" style="color: var(--text-primary)"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Tell us more about your interest in STEM CURES..."
+                class="{% if errors.message %}error{% endif %}"
+                required
+              >{% if form_data.message %}{{ form_data.message }}{% endif %}</textarea>
+              {% if errors.message %}
+                <span class="error-message">{{ errors.message }}</span>
+              {% endif %}
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>Email Us</h4>
+              <p>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=stemcures2016@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >stemcures2016@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📘</div>
+            <div>
+              <h4>Facebook</h4>
+              <p>
+                <a
+                  href="https://www.facebook.com/STEM4Refugees"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="accent-link"
+                  >@STEM4Refugees</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">❤️</div>
+            <div>
+              <h4>Support Our Mission</h4>
+              <p>
+                <a
+                  href="https://stem-cures.snwbll.com/giving-portal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="accent-link"
+                  >Visit our Giving Portal</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="section" style="padding: 1rem 0">
+        <p>STEM CURES. Inspiring young minds, building bright futures.</p>
+        <p style="margin-top: 1rem; opacity: 0.8">
+          Every child deserves the chance to dream, create, and innovate.
+        </p>
+      </div>
+    </footer>
+
+<script>
+  // Theme toggle functionality
+  (function () {
+    const themeToggle = document.getElementById("theme-toggle");
+
+    if (!themeToggle) {
+      console.error("Theme toggle button not found!");
+      return;
+    }
+
+    function setTheme(theme, save) {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.add("theme-transition");
+      window.setTimeout(
+        () => document.documentElement.classList.remove("theme-transition"),
+        300
+      );
+      if (save) {
+        try {
+          localStorage.setItem("theme", theme);
+        } catch (e) {
+          console.error("Could not save theme:", e);
+        }
+      }
+      updateNavbarStyle();
+    }
+
+    function updateNavbarStyle() {
+          const navbar = document.querySelector(".navbar");
+          if (!navbar) return;
+          
+          const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+
+          if (window.scrollY > 100) {
+            navbar.style.background = isDark
+              ? "#242e44"
+              : "rgba(255, 255, 255, 0.8)";
+            navbar.style.boxShadow = isDark
+              ? "0 2px 20px rgba(0, 0, 0, 0.5)"
+              : "0 2px 20px rgba(0, 0, 0, 0.15)";
+          } else {
+            navbar.style.background = isDark
+              ? "#242e44"
+              : "rgba(255, 255, 255, 0.8)";
+            navbar.style.boxShadow = isDark
+              ? "0 2px 20px rgba(0, 0, 0, 0.3)"
+              : "0 2px 20px rgba(0, 0, 0, 0.1)";
+          }
+        }
+
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved) {
+        setTheme(saved, false);
+      } else {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light", false);
+      }
+    } catch (e) {
+      console.error("Could not load theme:", e);
+    }
+
+    themeToggle.addEventListener("click", function () {
+      const current = document.documentElement.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      setTheme(newTheme, true);
+    });
+
+    window.addEventListener("scroll", updateNavbarStyle);
+  })();
+
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
+    });
+  });
+
+  // Function to show custom centered popup
+  function showPopup(type, title, message) {
+    const existingOverlay = document.querySelector(".popup-overlay");
+    if (existingOverlay) {
+      existingOverlay.remove();
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "popup-overlay";
+    overlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; display: flex; align-items: center; justify-content: center;";
+
+    const popup = document.createElement("div");
+    popup.className = "popup-notification " + type;
+    
+    const iconHtml = type === "success" ? "&#10004;" : "&#10006;";
+    
+    popup.innerHTML = 
+      '<div class="popup-icon-wrapper">' +
+        '<div class="popup-icon">' + iconHtml + '</div>' +
+      '</div>' +
+      '<div class="popup-content">' +
+        '<div class="popup-title">' + title + '</div>' +
+        '<div class="popup-message" style="text-align: left;">' + message + '</div>' +
+      '</div>' +
+      '<button class="popup-close">Close</button>';
+
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+
+    // Force a reflow to ensure the overlay is rendered
+    overlay.offsetHeight;
+
+    const closeBtn = popup.querySelector(".popup-close");
+    closeBtn.addEventListener("click", function() {
+      overlay.classList.add("hiding");
+      setTimeout(function() { overlay.remove(); }, 300);
+    });
+
+    overlay.addEventListener("click", function(e) {
+      if (e.target === overlay) {
+        overlay.classList.add("hiding");
+        setTimeout(function() { overlay.remove(); }, 300);
+      }
+    });
+  }
+
+  // DOMContentLoaded
+  document.addEventListener("DOMContentLoaded", function() {
+    const messagesDiv = document.querySelector(".messages");
+
+    // Check if there are any form errors from Django
+    const hasErrors = document.querySelector(".error-message") !== null;
+    
+    if (messagesDiv) {
+      const alerts = messagesDiv.querySelectorAll(".alert");
+
+      if (alerts.length > 0) {
+        alerts.forEach(function(alert) {
+          const isSuccess = alert.classList.contains("alert-success");
+          const messageText = alert.textContent.trim();
+
+          if (messageText) {
+            showPopup(
+              isSuccess ? "success" : "error",
+              isSuccess ? "Success!" : "Error",
+              messageText
+            );
+          }
+        });
+
+        messagesDiv.style.display = "none";
+      }
+    }
+
+    // If there are validation errors, scroll to contact form and show popup
+    if (hasErrors) {
+      // Scroll to contact section
+      setTimeout(function() {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+          contactSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }, 100);
+
+      // Collect all error messages
+      const errorMessages = document.querySelectorAll(".error-message");
+      if (errorMessages.length > 0) {
+        let errorText = "Please fix the following errors:\n\n";
+        errorMessages.forEach(function(error) {
+          errorText += "• " + error.textContent + "\n";
+        });
+        
+        // Show popup with all errors
+        setTimeout(function() {
+          showPopup("error", "Validation Error", errorText.replace(/\n/g, '<br>'));
+        }, 500);
+      }
+    }
+
+    // FADE-IN ANIMATIONS
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll(
+      ".section, .mission, .impact, .social-section, .donate-section"
+    );
+    sections.forEach(function(section) {
+      section.classList.add("fade-in-section");
+      observer.observe(section);
+    });
+
+    const missionCards = document.querySelectorAll(".mission-card");
+    missionCards.forEach(function(card, index) {
+      card.classList.add("fade-in-section");
+      if (index % 3 === 1) card.classList.add("delay-1");
+      if (index % 3 === 2) card.classList.add("delay-2");
+      observer.observe(card);
+    });
+
+    const programCards = document.querySelectorAll(".program-card");
+    programCards.forEach(function(card, index) {
+      card.classList.add("fade-in-section");
+      if (index % 3 === 1) card.classList.add("delay-1");
+      if (index % 3 === 2) card.classList.add("delay-2");
+      observer.observe(card);
+    });
+
+    const stats = document.querySelectorAll(".stat");
+    stats.forEach(function(stat, index) {
+      stat.classList.add("fade-in-section");
+      if (index === 1) stat.classList.add("delay-1");
+      if (index === 2) stat.classList.add("delay-2");
+      if (index === 3) stat.classList.add("delay-3");
+      observer.observe(stat);
+    });
+  });
+</script>
+  </body>
+</html>

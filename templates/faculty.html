@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty - STEM CURES</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script>
+      // Apply saved theme before CSS paints to avoid flash
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t) {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+    <style>
+      /* Fade-in animation styles */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in-section.delay-1 {
+        transition-delay: 0.1s;
+      }
+
+      .fade-in-section.delay-2 {
+        transition-delay: 0.2s;
+      }
+
+      .fade-in-section.delay-3 {
+        transition-delay: 0.3s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in-section {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="{% url 'home' %}" class="logo">STEM CURES</a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="{% url 'home' %}#home">Home</a></li>
+          <li class="nav-item"><a href="{% url 'faculty' %}">Faculty</a></li>
+          <li class="nav-item"><a href="{% url 'home' %}#about">About</a></li>
+          <li class="nav-item">
+            <a href="{% url 'home' %}#mission">Mission</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'home' %}#programs">Programs</a>
+          </li>
+          <li class="nav-item"><a href="{% url 'home' %}#impact">Impact</a></li>
+          <li class="nav-item">
+            <a href="{% url 'home' %}#social">Connect</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'home' %}#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://stem-cures.snwbll.com/giving-portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="donate-btn"
+              >Donate</a
+            >
+          </li>
+          <li class="nav-item">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              title="Toggle dark/light mode"
+            >
+              <svg
+                class="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+              <svg
+                class="moon-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Our Faculty</h1>
+        <p>
+          Meet the dedicated educators and experts who make our STEM programs
+          possible
+        </p>
+      </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="section">
+      <h2>Meet Our Team</h2>
+      <div class="faculty-grid">
+        <a
+          href="{% url 'faculty_profile' 'saif' %}"
+          class="faculty-card"
+        >
+          <div class="faculty-image">
+            <img
+              src="{% static 'images/saif.jpeg' %}"
+              alt="Saif Fakhouri"
+              style="object-position: center 38%"
+            />
+          </div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Saif Fakhouri</h3>
+            <p class="faculty-title">
+              Director of Digital Media & Web Development
+            </p>
+            <div class="faculty-department">CS Student</div>
+            <p class="faculty-preview">
+              "Helping STEM CURES share its mission through web design, social
+              media, and creative digital solutions."
+            </p>
+          </div>
+        </a>
+        
+        <a {% comment %}href="{% url 'faculty_profile' profile_id=x %}"{% endcomment %} class="faculty-card">
+          <div class="faculty-image">IMAGE</div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Blank</h3>
+            <p class="faculty-title">Role</p>
+            <div class="faculty-department">Skill</div>
+            <p class="faculty-preview">
+              A small description about yourself or a small quote from your
+              choice
+            </p>
+          </div>
+        </a>
+        
+        <a {% comment %}href="{% url 'faculty_profile' profile_id=x %}"{% endcomment %} class="faculty-card">
+          <div class="faculty-image">IMAGE</div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Blank</h3>
+            <p class="faculty-title">Role</p>
+            <div class="faculty-department">Skill</div>
+            <p class="faculty-preview">
+              A small description about yourself or a small quote from your
+              choice
+            </p>
+          </div>
+        </a>
+        
+        <a {% comment %}href="{% url 'faculty_profile' profile_id=x %}"{% endcomment %} class="faculty-card">
+          <div class="faculty-image">IMAGE</div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Blank</h3>
+            <p class="faculty-title">Role</p>
+            <div class="faculty-department">Skill</div>
+            <p class="faculty-preview">
+              A small description about yourself or a small quote from your
+              choice
+            </p>
+          </div>
+        </a>
+        
+        <a {% comment %}href="{% url 'faculty_profile' profile_id=x %}" {% endcomment %} class="faculty-card">
+          <div class="faculty-image">IMAGE</div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Blank</h3>
+            <p class="faculty-title">Role</p>
+            <div class="faculty-department">Skill</div>
+            <p class="faculty-preview">
+              A small description about yourself or a small quote from your
+              choice
+            </p>
+          </div>
+        </a>
+
+        <a {% comment %}href="{% url 'faculty_profile' profile_id=x %}" {% endcomment %} class="faculty-card">
+          <div class="faculty-image">IMAGE</div>
+          <div class="faculty-info">
+            <h3 class="faculty-name">Blank</h3>
+            <p class="faculty-title">Role</p>
+            <div class="faculty-department">Skill</div>
+            <p class="faculty-preview">
+              A small description about yourself or a small quote from your
+              choice
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="section" style="padding: 1rem 0">
+        <p>STEM CURES. Inspiring young minds, building bright futures.</p>
+        <p style="margin-top: 1rem; opacity: 0.8">
+          Every child deserves the chance to dream, create, and innovate.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+     (function () {
+     const themeToggle = document.getElementById("theme-toggle");
+
+      function updateNavbarStyle() {
+          const navbar = document.querySelector(".navbar");
+          if (!navbar) return;
+          
+          const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+
+          if (window.scrollY > 100) {
+            navbar.style.background = isDark
+              ? "#242e44"
+              : "rgba(255, 255, 255, 0.8)";
+            navbar.style.boxShadow = isDark
+              ? "0 2px 20px rgba(0, 0, 0, 0.5)"
+              : "0 2px 20px rgba(0, 0, 0, 0.15)";
+          } else {
+            navbar.style.background = isDark
+              ? "#242e44"
+              : "rgba(255, 255, 255, 0.8)";
+            navbar.style.boxShadow = isDark
+              ? "0 2px 20px rgba(0, 0, 0, 0.3)"
+              : "0 2px 20px rgba(0, 0, 0, 0.1)";
+          }
+        }
+      
+        function setTheme(theme, save = true) {
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.classList.add("theme-transition");
+          window.setTimeout(
+            () => document.documentElement.classList.remove("theme-transition"),
+            300
+          );
+          if (save) {
+            try {
+              localStorage.setItem("theme", theme);
+            } catch (e) {}
+          }
+          updateNavbarStyle();
+        }
+      
+        // Initialize theme
+        try {
+          const saved = localStorage.getItem("theme");
+          if (saved) {
+            setTheme(saved, false);
+          } else {
+            const prefersDark =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+            setTheme(prefersDark ? "dark" : "light", false);
+          }
+        } catch (e) {}
+      
+        // Theme toggle button
+        themeToggle.addEventListener("click", function() {
+          const current = document.documentElement.getAttribute("data-theme");
+          setTheme(current === "dark" ? "light" : "dark", true);
+        });
+      
+        window.addEventListener("scroll", updateNavbarStyle);
+        
+        // Apply immediately on load - FIXED: Wait for DOM
+        document.addEventListener("DOMContentLoaded", function() {
+          updateNavbarStyle();
+        });
+      })();
+      
+      // FADE-IN ANIMATIONS
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
+      };
+    
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      }, observerOptions);
+    
+      document.addEventListener("DOMContentLoaded", () => {
+        // Section
+        const section = document.querySelector(".section");
+        if (section) {
+          section.classList.add("fade-in-section");
+          observer.observe(section);
+        }
+      
+        // Faculty cards with stagger
+        const facultyCards = document.querySelectorAll(".faculty-card");
+        facultyCards.forEach((card, index) => {
+          card.classList.add("fade-in-section");
+          if (index % 3 === 1) card.classList.add("delay-1");
+          if (index % 3 === 2) card.classList.add("delay-2");
+          observer.observe(card);
+        });
+      });
+    </script>
+  </body>
+</html>
